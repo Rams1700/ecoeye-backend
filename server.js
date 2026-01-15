@@ -1,0 +1,17 @@
+const express = require("express");
+const cors = require("cors");
+require("./config/db");
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.use("/api/orders", require("./routes/orders"));
+app.use("/api/reports", require("./routes/reports"));
+app.use("/api/contact", require("./routes/contact"));
+
+const PORT = 5000;
+app.listen(PORT, () => {
+  console.log(`Backend running on http://localhost:${PORT}`);
+});
